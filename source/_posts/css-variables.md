@@ -1,0 +1,70 @@
+---
+title: CSS Variables
+date: 2017-05-07 12:41:00
+tags: CSS
+---
+
+## 声明与引用
+
+变量定义: `--*`
+
+变量使用: `var(--*)`
+
+```css
+:root {
+  --initFontSize: 30px;
+}
+h1 {
+  font-size: var(--initFontSize)
+}
+```
+
+自定义变量字符可以由 `0-9 || a-z || A-Z || 下划线_ || 短横线-` 组成，也可以是中文。。。
+
+```css
+:root {
+  --我是中文: 30px;
+}
+h1 {
+  font-size: var(--我是中文)
+}
+```
+
+<!-- more -->
+
+## 作用域
+
+CSS变量的使用一定要在声明块{}里面，同时{}也是变量的作用域，以下例子是错误的：
+
+```css
+--initFontSize: 30px; // 错误，不能在{}外
+h1 {
+  font-size: var(--initFontSize) // 返回浏览器默认值
+}
+```
+
+```css
+h1 {
+  --initFontSize: 30px; // 作用域只在h1
+}
+h2 {
+  font-size: var(--initFontSize) // 错误，返回浏览器默认值
+}
+```
+
+## 缺省值
+
+完整语法 `var(--variable, 20px)` ，其中20px是一个可选属性值，表示当变量 **没有定义时** 所使用的样式值，如果变量的定义与使用场景不匹配（不合法），此时将会返回浏览器对应的默认值。
+
+```css
+div {
+  background-color: var(--color, #eee); // --color未定义，返回#eee
+}
+```
+
+```css
+div {
+  --color: 30px;
+  background-color: var(--color, #eee); // 不合法，返回浏览器默认值
+}
+```
