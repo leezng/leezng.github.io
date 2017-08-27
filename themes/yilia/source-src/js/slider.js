@@ -41,61 +41,71 @@ function init() {
 			showTags: false,
 			search: ''
 		},
-	    methods: {
-	    	stop: (e) => {
-	    		e.stopPropagation()
-	    	},
-	    	choseTag: (e, name) => {
-	    		app.$set('search', '#' + (name ? name : e.target.innerHTML))
-	    	},
-	    	clearChose: (e) => {
-	    		app.$set('search', '')
-	    	},
-	    	toggleTag: (e) => {
-	    		app.$set('showTags', !app.showTags)
-	    		window.localStorage && window.localStorage.setItem(localTagKey, app.showTags)
-	    	},
-	        openSlider: (e, type) => {
-	        	e.stopPropagation()
-	        	if (!type) {
-	        		type = 'innerArchive'
-	        	}
-				// innerArchive: '所有文章'
-  				// friends: '友情链接'
-  				// aboutme: '关于我'
-  				app.$set('innerArchive', false)
-  				app.$set('friends', false)
-  				app.$set('aboutme', false)
-  				app.$set(type, true)
-  				app.$set('isShow', true)
-  				app.$set('isCtnShow', true)
-  				setScrollZero()
-			}
-	    },
-	    filters: {
-	    	isFalse: (val) => {
-	    		return val === false
-	    	},
-	    	isEmptyStr: (str) => {
-	    		return str === ''
-	    	},
-	    	isNotEmptyStr: (str) => {
-	    		return str !== ''
-	    	},
-	    	urlformat: (str) => {
-	    		return '/' + str
-	    	},
-	    	tagformat: (str) => {
-	    		return '#' + str
-	    	},
-	    	dateformat: (str) => {
-	    		let d = new Date(str)
-	    		return d.getFullYear() + '-' + fixzero((d.getMonth() + 1)) + '-' + fixzero(d.getDate())
-	    	}
-	    },
-	    ready: () => {
-	    }
+    methods: {
+    	stop: (e) => {
+    		e.stopPropagation()
+    	},
+    	choseTag: (e, name) => {
+    		app.$set('search', '#' + (name ? name : e.target.innerHTML))
+    	},
+    	clearChose: (e) => {
+    		app.$set('search', '')
+    	},
+    	toggleTag: (e) => {
+    		app.$set('showTags', !app.showTags)
+    		window.localStorage && window.localStorage.setItem(localTagKey, app.showTags)
+    	},
+      openSlider: (e, type) => {
+      	e.stopPropagation()
+      	if (!type) {
+      		type = 'innerArchive'
+      	}
+			  // innerArchive: '所有文章'
+				// friends: '友情链接'
+				// aboutme: '关于我'
+				app.$set('innerArchive', false)
+				app.$set('friends', false)
+				app.$set('aboutme', false)
+				app.$set(type, true)
+				app.$set('isShow', true)
+				app.$set('isCtnShow', true)
+				setScrollZero()
+		  },
+      hideApp: hideApp
+    },
+    filters: {
+    	isFalse: (val) => {
+    		return val === false
+    	},
+    	isEmptyStr: (str) => {
+    		return str === ''
+    	},
+    	isNotEmptyStr: (str) => {
+    		return str !== ''
+    	},
+    	urlformat: (str) => {
+    		return '/' + str
+    	},
+    	tagformat: (str) => {
+    		return '#' + str
+    	},
+    	dateformat: (str) => {
+    		let d = new Date(str)
+    		return d.getFullYear() + '-' + fixzero((d.getMonth() + 1)) + '-' + fixzero(d.getDate())
+    	}
+    },
+    ready: () => {
+    }
 	})
+
+  function hideApp(e) {
+    if (app.isShow) {
+      app.$set('isShow', false)
+      setTimeout(() => {
+        app.$set('isCtnShow', false)
+      }, 300)
+    }
+  }
 
 	function handleSearch(val) {
 		val = (val || '').toLowerCase()
@@ -150,14 +160,7 @@ function init() {
 	});
 
 	// 隐藏
-	document.querySelector('#container').onclick = (e) => {
-		if (app.isShow) {
-			app.$set('isShow', false)
-			setTimeout(() => {
-				app.$set('isCtnShow', false)
-			}, 300)
-		}
-	}
+	document.querySelector('#container').onclick = hideApp
 
 	// tag 显示/隐藏
 	let localTag = false
