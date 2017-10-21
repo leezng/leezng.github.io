@@ -21,6 +21,8 @@ tags: JavaScript
 
 `compareFunction` 的返回值没有区分为上述 3 种情况, 而是直接返回 `true || false`
 
+<!-- more -->
+
 ### example1
 
 ```js
@@ -31,8 +33,6 @@ for (let i = 0; i < numbers.length; i++) {
 }
 arr.sort((a, b) => a > b)
 ```
-
-<!-- more -->
 
 ### example2
 

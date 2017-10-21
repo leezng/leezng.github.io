@@ -23,6 +23,8 @@ tags: CSS
 }
 ```
 
+<!-- more -->
+
 ```html
 <div class="box box-1">
     <div class="left"></div>
@@ -30,8 +32,6 @@ tags: CSS
     <div class="center"></div>
 </div>
 ```
-
-<!-- more -->
 
 ## 利用 float 实现 中间优先渲染 (圣杯布局)
 
