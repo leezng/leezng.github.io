@@ -1,6 +1,6 @@
 ---
 title: Vue Render
-date: 2017-10-12 22:34:15
+date: 2017-10-28 21:52:29
 tags: JavaScript
 ---
 
