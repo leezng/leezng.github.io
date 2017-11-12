@@ -17,6 +17,8 @@ tags: JavaScript
 </template>
 ```
 
+<!-- more -->
+
 在这个渲染表单的场景中，不断使用 `v-if` 语句造成了代码的冗长，如果每一个 `v-if` 中还带有相同的代码片段，template 就会更显得臃肿，下面使用 `render` 函数进行重构：
 
 ```js
