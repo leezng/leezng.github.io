@@ -1,7 +1,7 @@
 ---
 title: Collapse折叠面板
 date: 2018-01-13 17:25:37
-tags: JavaScript, CSS
+tags: [JavaScript, CSS]
 ---
 
 ## JS
@@ -77,8 +77,8 @@ function toggle (list, activeItem) {
 
 ```html
 <div class="menuItem">
-  <h2><a href="#item1">商业平台学院</a></h2>
-  <p id="item1">商业平台学院是百度商业体系最大的前端团队，所在部门主要负责百度核心商业产品推广平台的建设，包括搜索推广和信息流推广，是公司绝大部分收入的来源。学院不仅提供Web前端、还有iOS、Android方向供大家学习。商业平台学院欢迎你的到来！</p>
+  <h2><a href="#item1">Label</a></h2>
+  <p id="item1">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.</p>
 </div>
 <div class="menuItem">...</div>
 <div class="menuItem">...</div>
