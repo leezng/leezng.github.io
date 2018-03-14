@@ -47,7 +47,7 @@ render: function (createElement) {
 }
 ```
 
-在上述例子中，使用了 `map` 函数实现 `v-for` 功能，即只需保证结果是一个符合参数规范的数组。但是，如果我们需要实现的是不同条件下渲染不同的子元素，而不是统一渲染相同的元素，下例使用了自执行函数保证返回虚拟 dom，任何其他有意义的返回值都是不被允许的。
+在上述例子中，使用了 `map` 函数实现 `v-for` 功能，即只需保证结果是一个符合参数规范的数组。但是，如果我们需要实现的是不同条件下渲染不同的子元素，而不是统一渲染相同的元素，下例使用了自执行函数保证返回虚拟 `dom`，任何其他有意义的返回值都是不被允许的。
 
 ```js
   h('el-' + formType,
@@ -62,6 +62,50 @@ render: function (createElement) {
       })()
     ]
   )
+```
+
+如果我们在 `.vue` 同一个组件中多次使用同一命名空间的 `slot`，这在 `vue.2.x` 中也是不允许的。
+
+```html
+<div>
+  <slot></slot>
+  <slot></slot>
+</div>
+```
+
+如上，在该组件中使用了2次默认 `slot` 导致错误。若在某种场景下，我们万不得已必须这么做，便可以借助 `render` 渲染函数实现。
+
+```js
+render (h) {
+  return h(div,
+    [
+      ...this.$slots.default,
+      ...deepClone(this.$slots.default, createElement)
+    ] 
+  )
+}
+```
+
+`deepClone` 是一个通过递归地创建VNode，实现深度复制的函数。[参考来源](https://jingsam.github.io/2017/03/08/vnode-deep-clone.html)
+
+```js
+function deepClone(vnodes, createElement) {
+  function cloneVNode (vnode) {
+    const clonedChildren = vnode.children && vnode.children.map(vnode => cloneVNode(vnode));
+    const cloned = createElement(vnode.tag, vnode.data, clonedChildren);
+    cloned.text = vnode.text;
+    cloned.isComment = vnode.isComment;
+    cloned.componentOptions = vnode.componentOptions;
+    cloned.elm = vnode.elm;
+    cloned.context = vnode.context;
+    cloned.ns = vnode.ns;
+    cloned.isStatic = vnode.isStatic;
+    cloned.key = vnode.key;
+    return cloned;
+  }
+  const clonedVNodes = vnodes.map(vnode => cloneVNode(vnode))
+  return clonedVNodes;
+}
 ```
 
 ## JSX
@@ -79,7 +123,7 @@ h('div',
 )
 ```
 
-在上面的例子中，只是为了渲染 `<div class="classNameA">hello</div>`，很显然使用 `Render` 函数是比较麻烦的，因此，我们通过引入 `JSX` 解决这个问题(相关Babel插件配置见官方)
+在上面的例子中，只是为了渲染 `<div class="classNameA">hello</div>`，很显然使用 `Render` 函数是比较麻烦的，因此，我们通过引入 `JSX` 解决这个问题(相关Babel插件配置见官方)。同时由于 `JSX` 语法会将所有以 `on` 开头的标志符解析为事件监听，例如 `<div onUpdated= { this.updated }>`， 此时 `onUpdated` 将作为监听 `updated` 事件，所以，我们应避免将属性名的前缀设置为 `on`，避免与事件监听冲突。
 
 ```jsx
 render (h) {
