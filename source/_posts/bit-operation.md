@@ -19,6 +19,8 @@ str.indexOf('ab') !== -1
 !!~~str.indexOf('ab')
 ```
 
+<!-- more -->
+
 ### ES6 String.prototype.includes()
 
 在ES6中提供了 `includes()` 方法用于判断一个字符串是否包含了另一个字符串:
