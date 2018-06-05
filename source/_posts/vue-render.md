@@ -123,7 +123,7 @@ h('div',
 )
 ```
 
-在上面的例子中，只是为了渲染 `<div class="classNameA">hello</div>`，很显然使用 `Render` 函数是比较麻烦的，因此，我们通过引入 `JSX` 解决这个问题(相关Babel插件配置见官方)。同时由于 `JSX` 语法会将所有以 `on` 开头的标志符解析为事件监听，例如 `<div onUpdated= { this.updated }>`， 此时 `onUpdated` 将作为监听 `updated` 事件，所以，我们应避免将属性名的前缀设置为 `on`，避免与事件监听冲突。
+在上面的例子中，只是为了渲染 `<div class="classNameA">hello</div>`，很显然使用 `Render` 函数是比较麻烦的，因此，我们通过引入 `JSX` 解决这个问题(相关Babel插件配置见官方)。同时由于 `on-*` 属性在 `Vue-JSX` 中会被识别为事件，例如 `<div onUpdated= { this.updated }>`， 此时 `onUpdated` 将作为监听 `updated` 事件，所以，我们应避免将属性名的前缀设置为 `on`，避免与事件监听冲突。
 
 ```jsx
 render (h) {
