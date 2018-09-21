@@ -60,6 +60,5 @@ Math.random() * 10 | 0 // 其实就是做了一次取整，任意数值 | 0 都�
 
 * <http://www.jstips.co/zh_cn/javascript/even-simpler-way-of-using-indexof-as-a-contains-clause/>
 * <https://juejin.im/entry/57317b2679df540060d5d6c2>
-* <http://jerryzou.com/posts/do-you-really-want-use-bit-operators-in-JavaScript/
-http://www.ruanyifeng.com/blog/2010/01/12_javascript_syntax_structures_you_should_not_use.html>
+* <http://www.ruanyifeng.com/blog/2010/01/12_javascript_syntax_structures_you_should_not_use.html>
 * <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators>
