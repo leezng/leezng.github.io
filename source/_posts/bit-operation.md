@@ -16,7 +16,7 @@ str.indexOf('ab') !== -1
 // 使用位运算:
 ~str.indexOf('ab') // 获得0与负数结果
 // 进一步处理, 得到true|false
-!!~~str.indexOf('ab')
+!!~str.indexOf('ab')
 ```
 
 <!-- more -->
