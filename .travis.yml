@@ -10,7 +10,7 @@ install:
   - npm install
 
 script:
-  - npm start generate
+  - npm run build
 
 after_script:
   - cd ./public

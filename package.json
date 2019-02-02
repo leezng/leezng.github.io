@@ -1,12 +1,14 @@
 {
-  "name": "hexo-site",
-  "version": "0.0.0",
+  "name": "leezng.github.io",
+  "version": "1.0.0",
   "private": true,
   "hexo": {
-    "version": "3.3.8"
+    "version": "3.8.0"
   },
   "scripts": {
-    "start": "hexo"
+    "dev": "hexo server",
+    "build": "hexo generate",
+    "hexo": "hexo"
   },
   "dependencies": {
     "hexo": "^3.2.0",
