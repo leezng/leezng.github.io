@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Leezng&#39;s blog">
 <meta property="og:description" content="记一次最简单的svn迁移至git的过程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-30T12:35:07.621Z">
+<meta property="og:updated_time" content="2019-06-30T12:54:33.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从svn迁移到git">
 <meta name="twitter:description" content="记一次最简单的svn迁移至git的过程">
@@ -24,7 +24,7 @@
     <link rel="alternative" href="/atom.xml" title="Leezng&#39;s blog" type="application/atom+xml">
   
   
-    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="icon" href="/blog/assets/favicon.ico">
   
   <link rel="stylesheet" type="text/css" href="/blog/./main.c30c70.css">
   <style type="text/css">
@@ -48,7 +48,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/assets/img/avatar.jpg" class="js-avatar">
+			<img src="/blog/assets/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Leezng (Daniel)</a></h1>
@@ -102,7 +102,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/assets/img/avatar.jpg" class="js-avatar">
+				<img src="/blog/assets/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Leezng (Daniel)</h1>
@@ -181,7 +181,7 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">userA = userA &lt;userA@xxx.com&gt;</span><br><span class="line">userB = userB &lt;userB@xxx.com&gt;</span><br><span class="line">userC = userC &lt;userC@xxx.com&gt;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>如何生成committer映射关系（svn帐号与git帐号映射）呢？参考(网上)[<a href="https://segmentfault.com/a/1190000014713162]做法，只需执行下面指令即可：" target="_blank" rel="noopener">https://segmentfault.com/a/1190000014713162]做法，只需执行下面指令即可：</a></li>
+<li>如何生成committer映射关系（svn帐号与git帐号映射）呢？参考<a href="https://segmentfault.com/a/1190000014713162" target="_blank" rel="noopener">网上</a>做法，只需执行下面指令即可：</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="built_in">log</span> -q | awk -F <span class="string">'|'</span> <span class="string">'/^r/ &#123;sub("^ ", "", $2); sub(" $", "", $2); print $2" = "$2" &lt;"$2"&gt;"&#125;'</span> | sort -u &gt; users.txt</span><br></pre></td></tr></table></figure>
 <p>接着，我发现项目已经有很久的提交历史了，而此次迁移的目的仅仅只需要xx之后的版本记录，于是再添加一个 <code>-r 12345</code>   参数，此时，我们的命令已经变成<code>git svn clone -r 12345 svn://xxx git_project --authors-file=users.txt</code></p>
