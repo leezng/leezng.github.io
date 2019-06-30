@@ -21,7 +21,7 @@ userB = userB <userB@xxx.com>
 userC = userC <userC@xxx.com>
 ```
 
-- 如何生成committer映射关系（svn帐号与git帐号映射）呢？参考(网上)[https://segmentfault.com/a/1190000014713162]做法，只需执行下面指令即可：
+- 如何生成committer映射关系（svn帐号与git帐号映射）呢？参考[网上](https://segmentfault.com/a/1190000014713162)做法，只需执行下面指令即可：
 
 ```bash
 svn log -q | awk -F '|' '/^r/ {sub("^ ", "", $2); sub(" $", "", $2); print $2" = "$2" <"$2">"}' | sort -u > users.txt
