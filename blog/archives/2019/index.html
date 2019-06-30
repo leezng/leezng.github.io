@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://leezng.github.io/blog">
-  <title>CSS Variables | Leezng&#39;s blog</title>
+  <title>Archives: 2019 | Leezng&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="声明与引用变量定义: --* 变量使用: var(--*) 123456:root &amp;#123;  --initFontSize: 30px;&amp;#125;h1 &amp;#123;  font-size: var(--initFontSize)&amp;#125; 自定义变量字符可以由 0-9 || a-z || A-Z || 下划线_ || 短横线- 组成，也可以是中文。。。 123456:root &amp;#123">
-<meta name="keywords" content="CSS">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CSS Variables">
-<meta property="og:url" content="https://leezng.github.io/blog/2017/05/07/css-variables/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Leezng&#39;s blog">
+<meta property="og:url" content="https://leezng.github.io/blog/archives/2019/index.html">
 <meta property="og:site_name" content="Leezng&#39;s blog">
-<meta property="og:description" content="声明与引用变量定义: --* 变量使用: var(--*) 123456:root &amp;#123;  --initFontSize: 30px;&amp;#125;h1 &amp;#123;  font-size: var(--initFontSize)&amp;#125; 自定义变量字符可以由 0-9 || a-z || A-Z || 下划线_ || 短横线- 组成，也可以是中文。。。 123456:root &amp;#123">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-30T12:35:07.621Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS Variables">
-<meta name="twitter:description" content="声明与引用变量定义: --* 变量使用: var(--*) 123456:root &amp;#123;  --initFontSize: 30px;&amp;#125;h1 &amp;#123;  font-size: var(--initFontSize)&amp;#125; 自定义变量字符可以由 0-9 || a-z || A-Z || 下划线_ || 短横线- 组成，也可以是中文。。。 123456:root &amp;#123">
+<meta name="twitter:title" content="Leezng&#39;s blog">
   
     <link rel="alternative" href="/atom.xml" title="Leezng&#39;s blog" type="application/atom+xml">
   
@@ -149,159 +144,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-css-variables" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      CSS Variables
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/blog/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/blog/2019/04/13/svn2git/" class="archive-article-date">
+  	<time datetime="2019-04-13T14:30:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/blog/2019/04/13/svn2git/">从svn迁移到git</a>
     </h1>
   
 
-        
-        <a href="/blog/2017/05/07/css-variables/" class="archive-article-date">
-  	<time datetime="2017-05-07T04:41:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="声明与引用"><a href="#声明与引用" class="headerlink" title="声明与引用"></a>声明与引用</h2><p>变量定义: <code>--*</code></p>
-<p>变量使用: <code>var(--*)</code></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">--initFontSize</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">var</span>(--initFontSize)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>自定义变量字符可以由 <code>0-9 || a-z || A-Z || 下划线_ || 短横线-</code> 组成，也可以是中文。。。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  --我是中文: 30px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">var</span>(--我是中文)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>CSS变量的使用一定要在声明块{}里面，同时{}也是变量的作用域，以下例子是错误的：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--initFontSize: 30px; // 错误，不能在&#123;&#125;外</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">var</span>(--initFontSize) // 返回浏览器默认值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  --initFontSize: 30px; // 作用域只在h1</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">var</span>(--initFontSize) // 错误，返回浏览器默认值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="缺省值"><a href="#缺省值" class="headerlink" title="缺省值"></a>缺省值</h2><p>完整语法 <code>var(--variable, 20px)</code> ，其中20px是一个可选属性值，表示当变量 <strong>没有定义时</strong> 所使用的样式值，如果变量的定义与使用场景不匹配（不合法），此时将会返回浏览器对应的默认值。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  background-color: var(--color, #eee); // --color未定义，返回#eee</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">--color</span>: <span class="number">30px</span>;</span><br><span class="line">  background-color: var(--color, #eee); // 不合法，返回浏览器默认值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://leezng.github.io/blog/2017/05/07/css-variables/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/blog/2017/06/12/html5-download/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          HTML5 实现下载功能
-        
-      </div>
-    </a>
   
   
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -325,8 +221,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
