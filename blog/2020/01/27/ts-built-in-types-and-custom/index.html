@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://leezng.github.io/blog">
-  <title>Archives: 2019/4 | Leezng&#39;s blog</title>
+  <title>TS内置类型与自定义 | Leezng&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leezng&#39;s blog">
-<meta property="og:url" content="https://leezng.github.io/blog/archives/2019/04/index.html">
+  <meta name="description" content="记录一些TypeScript的内置类型，及其自定义使用时的自由组合。">
+<meta name="keywords" content="TypeScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TS内置类型与自定义">
+<meta property="og:url" content="https://leezng.github.io/blog/2020/01/27/ts-built-in-types-and-custom/index.html">
 <meta property="og:site_name" content="Leezng&#39;s blog">
+<meta property="og:description" content="记录一些TypeScript的内置类型，及其自定义使用时的自由组合。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-05-27T14:14:36.708Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leezng&#39;s blog">
+<meta name="twitter:title" content="TS内置类型与自定义">
+<meta name="twitter:description" content="记录一些TypeScript的内置类型，及其自定义使用时的自由组合。">
   
     <link rel="alternative" href="/atom.xml" title="Leezng&#39;s blog" type="application/atom+xml">
   
@@ -144,60 +149,190 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-ts-built-in-types-and-custom" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/blog/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blog/2019/04/13/svn2git/" class="archive-article-date">
-  	<time datetime="2019-04-13T14:30:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2019/04/13/svn2git/">从svn迁移到git</a>
+    <h1 class="article-title" itemprop="name">
+      TS内置类型与自定义
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/blog/2020/01/27/ts-built-in-types-and-custom/" class="archive-article-date">
+  	<time datetime="2020-01-27T14:11:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记录一些TypeScript的内置类型，及其自定义使用时的自由组合。</p>
+<a id="more"></a>
+<h2 id="Partial"><a href="#Partial" class="headerlink" title="Partial"></a>Partial</h2><p>将某个类型里的属性全部变为可选</p>
+<blockquote>
+<p>从源码可以看到 keyof T 拿到 T 所有属性名, 然后 in 进行遍历, 将值赋给 P, 最后 T[P] 取得相应属性的值。结合中间的 ?，将所有属性变为可选。</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib</span></span><br><span class="line"><span class="keyword">type</span> Partial&lt;T&gt; = &#123;</span><br><span class="line">    [P <span class="keyword">in</span> keyof T]?: T[P];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">interface</span> T1 &#123;</span><br><span class="line">    key: <span class="built_in">string</span>;</span><br><span class="line">    value: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T2 = Partial&lt;T1&gt; <span class="comment">// &#123; key?, value? &#125;</span></span><br></pre></td></tr></table></figure>
+<p>一个简单的具体应用例子，一个状态的值是一个对象 <code>{ key: &#39;&#39;, val: &#39;&#39; }</code>，每次更新这个状态时，可能只更新其中一个字段或者都更新，因此，使用 <code>Partial</code> 进行操作。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> ItemType &#123;</span><br><span class="line">  key: <span class="built_in">string</span>;</span><br><span class="line">  val: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> TriggerConfigsType &#123;</span><br><span class="line">  [id: <span class="built_in">number</span>]: Partial&lt;ItemType&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Required"><a href="#Required" class="headerlink" title="Required"></a>Required</h2><p>将某个类型里的属性全部变为必选(与 <code>Partial</code> 相反)</p>
+<blockquote>
+<p>其中 -? 是代表移除 ? 这个 modifier 的标识。对应的还有个 +?， 与 -? 相反，用来把属性变成可选项的，+ 可省略。</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib</span></span><br><span class="line"><span class="keyword">type</span> Required&lt;T&gt; = &#123;</span><br><span class="line">    [P <span class="keyword">in</span> keyof T]-?: T[P];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">interface</span> T1 &#123;</span><br><span class="line">    key?: <span class="built_in">string</span>;</span><br><span class="line">    value?: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T2 = Required&lt;T1&gt; <span class="comment">// &#123; key, value &#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Readonly"><a href="#Readonly" class="headerlink" title="Readonly"></a>Readonly</h2><p>将某个类型里的属性全部变为只读</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib</span></span><br><span class="line"><span class="keyword">type</span> Readonly&lt;T&gt; = &#123;</span><br><span class="line">    readonly [P <span class="keyword">in</span> keyof T]: T[P];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">interface</span> T1 &#123;</span><br><span class="line">    key: <span class="built_in">string</span>;</span><br><span class="line">    value: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T2 = Readonly&lt;T1&gt; <span class="comment">// &#123; readonly key, readonly value &#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Pick"><a href="#Pick" class="headerlink" title="Pick"></a>Pick</h2><p>这个类型则可以将某个类型中的子属性挑出来，变成包含这个类型部分属性的子类型。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib</span></span><br><span class="line"><span class="keyword">type</span> Pick&lt;T, K <span class="keyword">extends</span> keyof T&gt; = &#123;</span><br><span class="line">    [P <span class="keyword">in</span> K]: T[P];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">interface</span> T1 &#123;</span><br><span class="line">    key: <span class="built_in">string</span>;</span><br><span class="line">    value: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T2 = Pick&lt;T1, <span class="string">'key'</span>&gt; <span class="comment">// &#123; key &#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Exclude"><a href="#Exclude" class="headerlink" title="Exclude"></a>Exclude</h2><p>Exclude 将类型A中属于类型B的移除掉。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib</span></span><br><span class="line"><span class="keyword">type</span> Exclude&lt;T, U&gt; = T <span class="keyword">extends</span> U ? never : T;</span><br><span class="line"></span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">type</span> T1 = Exclude&lt;<span class="string">'a'</span> | <span class="string">'b'</span> | <span class="string">'c'</span> | <span class="string">'d'</span>, <span class="string">'a'</span> | <span class="string">'c'</span> | <span class="string">'f'</span>&gt;;  <span class="comment">// 'b' | 'd'</span></span><br></pre></td></tr></table></figure>
+<h2 id="Extract"><a href="#Extract" class="headerlink" title="Extract"></a>Extract</h2><p>从 T 中提取出 U</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib</span></span><br><span class="line"><span class="keyword">type</span> Extract&lt;T, U&gt; = T <span class="keyword">extends</span> U ? T : never;</span><br><span class="line"></span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">type</span> T1 = Extract&lt;<span class="string">'a'</span> | <span class="string">'b'</span> | <span class="string">'c'</span> | <span class="string">'d'</span>, <span class="string">'a'</span> | <span class="string">'c'</span> | <span class="string">'f'</span>&gt;;  <span class="comment">// -&gt; 'a' | 'c'</span></span><br></pre></td></tr></table></figure>
+<h2 id="ReturnType"><a href="#ReturnType" class="headerlink" title="ReturnType"></a>ReturnType</h2><p>获取函数的返回类型。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib</span></span><br><span class="line"><span class="keyword">type</span> ReturnType&lt;T <span class="keyword">extends</span> (...args: <span class="built_in">any</span>[]) =&gt; <span class="built_in">any</span>&gt; = T <span class="keyword">extends</span> (...args: <span class="built_in">any</span>[]) =&gt; infer R ? R : <span class="built_in">any</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toString</span>(<span class="params">num: <span class="built_in">number</span></span>): <span class="title">string</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num.toString();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T1 = ReturnType&lt;<span class="keyword">typeof</span> toString&gt;; <span class="comment">// string</span></span><br></pre></td></tr></table></figure>
+<h2 id="NonNullable"><a href="#NonNullable" class="headerlink" title="NonNullable"></a>NonNullable</h2><p>过滤类型中的 null 与 undefined</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib</span></span><br><span class="line"><span class="keyword">type</span> NonNullable&lt;T&gt; = T <span class="keyword">extends</span> <span class="literal">null</span> | <span class="literal">undefined</span> ? never : T;</span><br><span class="line"></span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">type</span> T1 = <span class="built_in">string</span> | <span class="built_in">number</span> | <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">type</span> T2 = NonNullable&lt;T1&gt;; <span class="comment">// string | number;</span></span><br></pre></td></tr></table></figure>
+<h2 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h2><h3 id="Omit"><a href="#Omit" class="headerlink" title="Omit"></a>Omit</h3><p>更高级的Pick，除了类型U，其他都pick出来，组成新的类型</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib</span></span><br><span class="line"><span class="keyword">type</span> Omit&lt;T, U&gt; = Pick&lt;T, Exclude&lt;keyof T, U&gt;&gt;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">interface</span> Project &#123;</span><br><span class="line">    name: <span class="built_in">string</span>;</span><br><span class="line">    id: <span class="built_in">number</span>;</span><br><span class="line">    users: <span class="built_in">string</span>[];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> SimpleProject = Omit&lt;Project, <span class="string">'users'</span>&gt; <span class="comment">// &#123; name, id &#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="PowerPartial"><a href="#PowerPartial" class="headerlink" title="PowerPartial"></a>PowerPartial</h3><p>深层级的Partial，可支持多层对象的属性</p>
+<blockquote>
+<p><a href="https://github.com/eggjs/egg/blob/master/index.d.ts" target="_blank" rel="noopener">https://github.com/eggjs/egg/blob/master/index.d.ts</a></p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib</span></span><br><span class="line"><span class="keyword">type</span> PowerPartial&lt;T&gt; = &#123;</span><br><span class="line">  [U <span class="keyword">in</span> keyof T]?: T[U] <span class="keyword">extends</span> object ? PowerPartial&lt;T[U]&gt; : T[U];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="PromiseReturnType"><a href="#PromiseReturnType" class="headerlink" title="PromiseReturnType"></a>PromiseReturnType</h3><p>获取Promise的返回值类型</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib</span></span><br><span class="line"><span class="keyword">type</span> PromiseReturnType&lt;T <span class="keyword">extends</span> <span class="built_in">Promise</span>&lt;<span class="built_in">any</span>&gt;&gt; = T <span class="keyword">extends</span> <span class="built_in">Promise</span>&lt;infer R&gt;  ? R  : <span class="built_in">any</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">type</span> MyPromise = <span class="built_in">Promise</span>&lt;<span class="built_in">string</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T = PromiseReturnType&lt;MyPromise&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Overwrite"><a href="#Overwrite" class="headerlink" title="Overwrite"></a>Overwrite</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lib</span></span><br><span class="line"><span class="keyword">type</span> Overwrite&lt;T, U&gt; = &#123;</span><br><span class="line">  [K <span class="keyword">in</span> keyof T]: K <span class="keyword">extends</span> keyof U ? U[K] : T[K]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">type</span> Props = &#123; name: <span class="built_in">string</span>; age: <span class="built_in">number</span>; visible: <span class="built_in">boolean</span> &#125;;</span><br><span class="line"><span class="keyword">type</span> NewProps = &#123; age: <span class="built_in">string</span>; other: <span class="built_in">string</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ReplacedProps = Overwrite&lt;Props, NewProps&gt;; <span class="comment">// &#123; name: string; age: string; visible: boolean; &#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="开源库"><a href="#开源库" class="headerlink" title="开源库"></a>开源库</h3><ul>
+<li><a href="https://github.com/sindresorhus/type-fest" target="_blank" rel="noopener">https://github.com/sindresorhus/type-fest</a></li>
+<li><a href="https://github.com/piotrwitek/utility-types" target="_blank" rel="noopener">https://github.com/piotrwitek/utility-types</a></li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://juejin.im/post/5c2f87ce5188252593122c98#heading-21" target="_blank" rel="noopener">https://juejin.im/post/5c2f87ce5188252593122c98#heading-21</a></li>
+<li><a href="https://wanghx.cn/blog/github/issue13.html" target="_blank" rel="noopener">https://wanghx.cn/blog/github/issue13.html</a></li>
+<li><a href="https://github.com/whxaxes/blog/issues/14" target="_blank" rel="noopener">https://github.com/whxaxes/blog/issues/14</a></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">TypeScript</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://leezng.github.io/blog/2020/01/27/ts-built-in-types-and-custom/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/blog/2019/04/13/svn2git/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">从svn迁移到git</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -220,8 +355,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
