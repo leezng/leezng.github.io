@@ -8,7 +8,9 @@ tags: TypeScript
 
 <!-- more -->
 
-## Partial
+## 一些TS内置类型
+
+### Partial
 
 将某个类型里的属性全部变为可选
 
@@ -29,7 +31,7 @@ interface T1 {
 type T2 = Partial<T1> // { key?, value? }
 ```
 
-一个简单的具体应用例子，一个状态的值是一个对象 `{ key: '', val: '' }`，每次更新这个状态时，可能只更新其中一个字段或者都更新，因此，使用 `Partial` 进行操作。
+具体应用例子如下，一个状态的值是一个对象 `{ key: '', val: '' }`，每次更新这个状态时，可能只更新其中一个字段或者都更新，因此，使用 `Partial` 进行操作。
 
 ```ts
 interface ItemType {
@@ -42,7 +44,7 @@ interface TriggerConfigsType {
 }
 ```
 
-## Required
+### Required
 
 将某个类型里的属性全部变为必选(与 `Partial` 相反)
 
@@ -63,7 +65,7 @@ interface T1 {
 type T2 = Required<T1> // { key, value }
 ```
 
-## Readonly
+### Readonly
 
 将某个类型里的属性全部变为只读
 
@@ -82,7 +84,7 @@ interface T1 {
 type T2 = Readonly<T1> // { readonly key, readonly value }
 ```
 
-## Pick
+### Pick
 
 这个类型则可以将某个类型中的子属性挑出来，变成包含这个类型部分属性的子类型。
 
@@ -101,7 +103,7 @@ interface T1 {
 type T2 = Pick<T1, 'key'> // { key }
 ```
 
-## Exclude
+### Exclude
 
 Exclude 将类型A中属于类型B的移除掉。
 
@@ -113,7 +115,7 @@ type Exclude<T, U> = T extends U ? never : T;
 type T1 = Exclude<'a' | 'b' | 'c' | 'd', 'a' | 'c' | 'f'>;  // 'b' | 'd'
 ```
 
-## Extract
+### Extract
 
 从 T 中提取出 U
 
@@ -125,7 +127,7 @@ type Extract<T, U> = T extends U ? T : never;
 type T1 = Extract<'a' | 'b' | 'c' | 'd', 'a' | 'c' | 'f'>;  // -> 'a' | 'c'
 ```
 
-## ReturnType
+### ReturnType
 
 获取函数的返回类型。
 
@@ -141,7 +143,7 @@ function toString(num: number): string {
 type T1 = ReturnType<typeof toString>; // string
 ```
 
-## NonNullable
+### NonNullable
 
 过滤类型中的 null 与 undefined
 
