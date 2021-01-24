@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://leezng.github.io/blog">
-  <title>Leezng&#39;s blog</title>
+  <title>VueJsonPretty 版本变更记录(Vue3) | Leezng&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leezng&#39;s blog">
-<meta property="og:url" content="https://leezng.github.io/blog/page/2/index.html">
+  <meta name="description" content="关于 Vue Json PrettyVue Json Pretty第一个版本发布于 2017 年，基于Vue2 与官方提供的VueCLI工具搭建了基础项目结构，趁着Vue3正式发布的机缘，我也对项目进行了一次比较大的技术栈升级。 从Vue2到Vue3关于Vue2与Vue3的区别与升级指南，社区上已有不少文章，本文就不再对此进行过多叙述。  从OptionApi切换到 CompositionApi。">
+<meta name="keywords" content="Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VueJsonPretty 版本变更记录(Vue3)">
+<meta property="og:url" content="https://leezng.github.io/blog/2021/01/24/vue-json-pretty-to-vue3/index.html">
 <meta property="og:site_name" content="Leezng&#39;s blog">
+<meta property="og:description" content="关于 Vue Json PrettyVue Json Pretty第一个版本发布于 2017 年，基于Vue2 与官方提供的VueCLI工具搭建了基础项目结构，趁着Vue3正式发布的机缘，我也对项目进行了一次比较大的技术栈升级。 从Vue2到Vue3关于Vue2与Vue3的区别与升级指南，社区上已有不少文章，本文就不再对此进行过多叙述。  从OptionApi切换到 CompositionApi。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-01-24T13:33:45.549Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leezng&#39;s blog">
+<meta name="twitter:title" content="VueJsonPretty 版本变更记录(Vue3)">
+<meta name="twitter:description" content="关于 Vue Json PrettyVue Json Pretty第一个版本发布于 2017 年，基于Vue2 与官方提供的VueCLI工具搭建了基础项目结构，趁着Vue3正式发布的机缘，我也对项目进行了一次比较大的技术栈升级。 从Vue2到Vue3关于Vue2与Vue3的区别与升级指南，社区上已有不少文章，本文就不再对此进行过多叙述。  从OptionApi切换到 CompositionApi。">
   
     <link rel="alternative" href="/atom.xml" title="Leezng&#39;s blog" type="application/atom+xml">
   
@@ -144,195 +149,45 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-clickoutside" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-vue-json-pretty-to-vue3" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/10/12/clickoutside/">Clickoutside</a>
+    <h1 class="article-title" itemprop="name">
+      VueJsonPretty 版本变更记录(Vue3)
     </h1>
   
 
         
-        <a href="/blog/2017/10/12/clickoutside/" class="archive-article-date">
-  	<time datetime="2017-10-12T14:34:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-12</time>
+        <a href="/blog/2021/01/24/vue-json-pretty-to-vue3/" class="archive-article-date">
+  	<time datetime="2021-01-24T13:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一个常见问题"><a href="#一个常见问题" class="headerlink" title="一个常见问题"></a>一个常见问题</h2><p>Question: 编写一个自定义的弹窗，当用户点击页面中弹窗的之外的其他地方，弹窗隐藏。</p>
-<p>在 Stack Overflow 上存在类似问题：<a href="https://stackoverflow.com/questions/152975/how-do-i-detect-a-click-outside-an-element" target="_blank" rel="noopener">How to detect a click outside an element?</a></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// stackoverflow 上该问题的推荐答案</span></span><br><span class="line">$(<span class="built_in">window</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">// Hide the menus if visible</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="string">'#menucontainer'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  event.stopPropagation();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/blog/2017/10/12/clickoutside/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/10/12/clickoutside/">Read more >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-how-to-get-css-value-in-JavaScript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/08/13/how-to-get-css-value-in-JavaScript/">原生JS获取或设置元素样式的方法</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/08/13/how-to-get-css-value-in-JavaScript/" class="archive-article-date">
-  	<time datetime="2017-08-13T12:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="element-style"><a href="#element-style" class="headerlink" title="element.style"></a>element.style</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$<span class="number">0.</span>style</span><br><span class="line"><span class="comment">// return $0 html结构直接样式</span></span><br></pre></td></tr></table></figure>
-<p>例如在 <code>&lt;div style=&quot;color: black;&quot;&gt;&lt;/div&gt;</code> 中， <code>$0.style.color</code> 将返回 <code>&quot;black&quot;</code> ，如果在样式表中，该 div 同时存在其他样式 <code>position: &quot;relative;&quot;</code> ，使用 style 方法是无法获取到的。</p>
-<p>该方法可读可写，例如通过 <code>$0.style.display = &quot;table&quot;</code> 可以为其添加或修改 <code>display</code> 的属性值为 <code>table</code> 。</p>
-        
-          <a class="article-more-a" href="/blog/2017/08/13/how-to-get-css-value-in-JavaScript/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/08/13/how-to-get-css-value-in-JavaScript/">Read more >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-array-prototype-sort" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/07/30/array-prototype-sort/">Array.prototype.sort</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/07/30/array-prototype-sort/" class="archive-article-date">
-  	<time datetime="2017-07-30T04:41:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="自定义-compareFunction"><a href="#自定义-compareFunction" class="headerlink" title="自定义 compareFunction"></a>自定义 compareFunction</h2><p><code>[elements...].sort((a, b) =&gt; a - b)</code></p>
+        <h2 id="关于-Vue-Json-Pretty"><a href="#关于-Vue-Json-Pretty" class="headerlink" title="关于 Vue Json Pretty"></a>关于 Vue Json Pretty</h2><p><a href="https://github.com/leezng/vue-json-pretty" target="_blank" rel="noopener">Vue Json Pretty</a>第一个版本发布于 2017 年，基于<code>Vue</code>2 与官方提供的<code>VueCLI</code>工具搭建了基础项目结构，趁着<code>Vue3</code>正式发布的机缘，我也对项目进行了一次比较大的技术栈升级。</p>
+<h2 id="从Vue2到Vue3"><a href="#从Vue2到Vue3" class="headerlink" title="从Vue2到Vue3"></a>从<code>Vue2</code>到<code>Vue3</code></h2><p>关于<code>Vue2</code>与<code>Vue3</code>的区别与升级指南，社区上已有不少文章，本文就不再对此进行过多叙述。</p>
 <ul>
-<li><code>compareFunction(a, b) &lt; 0</code> 时, b 排在 a 后面</li>
-<li><code>compareFunction(a, b) &gt; 0</code> 时, b 排在 a 前面</li>
-<li><code>compareFunction(a, b) = 0</code> 时, a 与 b 的位置不变</li>
+<li>从<code>OptionApi</code>切换到 <code>CompositionApi</code>。这个 API 是<code>Vue3</code>API 中一个比较精彩与新变化的部分，对于熟悉<code>React</code>技术栈的开发者来说，应该再熟悉不过了，没错，就是<code>hooks</code>。关于<code>hooks</code> 在 <code>React</code> 社区已经有比较多的实践了，Vue 还比较少，思路大同小异。下面截取了项目中使用到的几个简单小例子（第一代码块），并与旧版本（第二代码块）进行对比。相对而言，我还是比较喜欢新的 API 模式的，尤其是在旧 API 可能会存在<code>mixin</code>的时候。想象一下我们可以把一段段逻辑都聚合成一个个的<code>use</code>（例如<code>useRequest</code>），就像把面条装在了各个方便面盒子里，在需要的时候按需取用。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">3</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">20</span>, <span class="number">66</span>].sort(<span class="function">(<span class="params">pre, curr</span>) =&gt;</span> pre - curr)</span><br><span class="line"><span class="comment">// [1, 3, 6, 20, 66]</span></span><br></pre></td></tr></table></figure>
-<h2 id="一些误用"><a href="#一些误用" class="headerlink" title="一些误用"></a>一些误用</h2><p><code>compareFunction</code> 的返回值没有区分为上述 3 种情况, 而是直接返回 <code>true || false</code></p>
-        
-          <a class="article-more-a" href="/blog/2017/07/30/array-prototype-sort/#more">more >></a>
-        
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> state = reactive(&#123;</span><br><span class="line">  visible: <span class="literal">false</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> tree = ref&lt;HTMLElement&gt;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dataType = computed(<span class="function"><span class="params">()</span> =&gt;</span> getDataType(props.node.content));</span><br><span class="line"></span><br><span class="line">watchEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (propsErrorMessage.value) &#123;</span><br><span class="line">    emitError(propsErrorMessage.value);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">data () &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    visible: this.currentDeep &lt;= this.deep,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">dataType () &#123;</span><br><span class="line">  return this.getDataType(this.data)</span><br><span class="line">&#125;,</span><br><span class="line">watch: &#123;</span><br><span class="line">  propsError (message) &#123;</span><br><span class="line">    if (message) &#123;</span><br><span class="line">      throw new Error(`[vue-json-pretty] $&#123;message&#125;`)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="从-vue到-tsx"><a href="#从-vue到-tsx" class="headerlink" title="从.vue到.tsx"></a>从<code>.vue</code>到<code>.tsx</code></h2><p><code>Vue3</code>使用了<code>Typescript</code>进行改造，自然对<code>Typescript</code>的支持是较为友好的，<code>ts</code> 是一种一旦使用就会放不下的东西，配合编辑器的提示，用起来非常顺手。通过使用 <code>@vue/babel-plugin-jsx</code> 即可轻松为项目配置 <code>.tsx</code> 的写法，以下截取了一小部分代码片段，这种更接近 <code>js</code> 的写法，在代码逻辑与组件拼装上是更为自由的，尤其是在出现很多 <code>if else</code> 的时候。同时，为了输出项目的 <code>types</code>，我建立了另一个不同的<code>tsconfig.json</code>，并在项目构建的时候调用<code>tsc</code>命令进行输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import &#123; defineComponent, computed, PropType &#125; from &apos;vue&apos;;</span><br><span class="line"></span><br><span class="line">export default defineComponent(&#123;</span><br><span class="line">  props: &#123;</span><br><span class="line">    ...xxx,</span><br><span class="line">    isMultiple: Boolean,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; uiType, model, $emit &#125; = this;</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">      &lt;label</span><br><span class="line">        class=&#123;[`vjs-check-controller`, model ? &apos;is-checked&apos; : &apos;&apos;]&#125;</span><br><span class="line">        onClick=&#123;e =&gt; e.stopPropagation()&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;span class=&#123;`vjs-check-controller__inner is-$&#123;uiType&#125;`&#125; /&gt;</span><br><span class="line">      &lt;/label&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="虚拟滚动"><a href="#虚拟滚动" class="headerlink" title="虚拟滚动"></a>虚拟滚动</h2><p>相对于上一个版本使用递归组件的方式，我将代码的 <code>DOM</code> 结构进行了“拍平”。虚拟列表是近些年比较流行的一种实现方式，项目核心逻辑从对一个 <code>JSON</code> 不断进行递归渲染，变成通过 <code>js</code> 对 <code>JSON</code> 数据进行解析（jsonFlatten 方法），得到一个扁平化的数组。所以，本项目经过这次改造，也顺利提供了大数据的能力支持。</p>
+<h2 id="其他变更"><a href="#其他变更" class="headerlink" title="其他变更"></a>其他变更</h2><ul>
+<li>devDependencies 的升级（babel/webpack/eslint/…），借助 <code>npm-check</code></li>
+<li>代码格式化，引入 <code>prettier</code></li>
+<li>加入测试，引入 <code>cypress</code></li>
+<li>CI 流程优化，废除原 <code>travis-ci</code>，使用 <code>github Actions</code></li>
+</ul>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>好了，总结就先记录这么多，更多思路可以查看项目工程<a href="https://github.com/leezng/vue-json-pretty" target="_blank" rel="noopener">Vue Json Pretty</a>。</p>
+<p>欢迎大家使用交流与共建~</p>
+
       
 
       
@@ -345,7 +200,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
         		</li>
       		
 		</ul>
@@ -354,16 +209,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/07/30/array-prototype-sort/">Read more >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://leezng.github.io/blog/2021/01/24/vue-json-pretty-to-vue3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2020/01/27/ts-built-in-types-and-custom/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">TS内置类型与自定义</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -383,256 +297,14 @@
 
 
 
-
-  
-    <article id="post-left-and-right-fixed-width-intermediate-adaptive-layout" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/07/07/left-and-right-fixed-width-intermediate-adaptive-layout/">左右固定宽度，中间自适应布局</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/07/07/left-and-right-fixed-width-intermediate-adaptive-layout/" class="archive-article-date">
-  	<time datetime="2017-07-07T13:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="利用-float-实现"><a href="#利用-float-实现" class="headerlink" title="利用 float 实现"></a>利用 float 实现</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box-1</span> &#123;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box-1</span> <span class="selector-class">.left</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box-1</span> <span class="selector-class">.center</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box-1</span> <span class="selector-class">.right</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: right;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/blog/2017/07/07/left-and-right-fixed-width-intermediate-adaptive-layout/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/07/07/left-and-right-fixed-width-intermediate-adaptive-layout/">Read more >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-html5-download" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/06/12/html5-download/">HTML5 实现下载功能</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/06/12/html5-download/" class="archive-article-date">
-  	<time datetime="2017-06-12T14:31:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="在-lt-a-gt-标签上直接设置-href-download"><a href="#在-lt-a-gt-标签上直接设置-href-download" class="headerlink" title="在 &lt;a&gt; 标签上直接设置 href, download"></a>在 <code>&lt;a&gt;</code> 标签上直接设置 href, download</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"./README.md"</span> <span class="attr">download</span>&gt;</span>download<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这种方法适合静态文件的下载，此外设置 <code>download=&quot;file.json&quot;</code> 可以设置文件名</p>
-<h2 id="动态生成文件"><a href="#动态生成文件" class="headerlink" title="动态生成文件"></a>动态生成文件</h2><ol>
-<li>设置 <code>href</code> 属性</li>
-<li>设置 <code>download</code> 属性</li>
-<li>使用 <code>JavaScript</code> 触发 <code>&lt;a&gt;</code> 标签的 <code>click</code> 事件</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> downloadFile = <span class="function">(<span class="params">element, fileName, content</span>) =&gt;</span> &#123;</span><br><span class="line">  element.download = fileName</span><br><span class="line">  element.href = <span class="string">"data:text/plain,"</span> + content</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">element.addEventListener(<span class="string">'click'</span>, downloadFile(<span class="built_in">arguments</span>))</span><br></pre></td></tr></table></figure>
-<p><code>data:text/plain</code>：把内容直接放置在 HTML 中，适合数据量小的内容，相对于 <code>httpURL</code> ，节省了一个 HTTP 请求。</p>
-        
-          <a class="article-more-a" href="/blog/2017/06/12/html5-download/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">HTML5</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/06/12/html5-download/">Read more >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-css-variables" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/05/07/css-variables/">CSS Variables</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2017/05/07/css-variables/" class="archive-article-date">
-  	<time datetime="2017-05-07T04:41:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="声明与引用"><a href="#声明与引用" class="headerlink" title="声明与引用"></a>声明与引用</h2><p>变量定义: <code>--*</code></p>
-<p>变量使用: <code>var(--*)</code></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">--initFontSize</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">var</span>(--initFontSize)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>自定义变量字符可以由 <code>0-9 || a-z || A-Z || 下划线_ || 短横线-</code> 组成，也可以是中文。。。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  --我是中文: 30px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">var</span>(--我是中文)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/blog/2017/05/07/css-variables/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2017/05/07/css-variables/">Read more >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/blog/">&laquo; Prev</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -655,8 +327,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
