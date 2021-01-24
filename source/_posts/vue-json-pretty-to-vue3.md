@@ -8,6 +8,8 @@ tags: Vue
 
 [Vue Json Pretty](https://github.com/leezng/vue-json-pretty)第一个版本发布于 2017 年，基于`Vue`2 与官方提供的`VueCLI`工具搭建了基础项目结构，趁着`Vue3`正式发布的机缘，我也对项目进行了一次比较大的技术栈升级。
 
+<!-- more -->
+
 ## 从`Vue2`到`Vue3`
 
 关于`Vue2`与`Vue3`的区别与升级指南，社区上已有不少文章，本文就不再对此进行过多叙述。
